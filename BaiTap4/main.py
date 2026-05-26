@@ -1,21 +1,16 @@
 print("=" * 55)
-print("     HỆ THỐNG DUYỆT ĐIỀU KIỆN PHẪU THUẬT")
+print("     HỆ THỐNG KHAI BÁO NHÂN SỰ MỚI    ")
 print("=" * 55)
 
+is_true = True
+while is_true :
+    quantity_emp = int(input("Vui lòng nhập số lượng nhân sự mới trong tháng này: "))
 
-age        = int(input("Nhập tuổi bệnh nhân (Age)              : "))
-blood_pressure    = int(input("Nhập huyết áp tâm thu (mmHg)           : "))
-blood_sugar = int(input("Nhập đường huyết (mg/dL)               : "))
+    if quantity_emp <= 0 :
+        print("LỖI: SỐ LƯỢNG KHÔNG HỢP LỆ! VUI LÒNG NHẬP MỘT CON SỐ LỚN HƠN 0.")
+    else :
+        print("[THÀNH CÔNG] ĐÃ GHI KẾT QUẢ YÊU CẦU CẤP PHÁT TÀI SẢN CHO ", quantity_emp ,"NHÂN SỰ")
+        print("---- Chương trình kết thúc ----")
+        is_true = False
+    
 
-print("-" * 55)
-
-if age < 75:
-    if 90 <= blood_pressure <= 140:
-        if blood_sugar < 150:
-            print("ĐỦ ĐIỀU KIỆN PHẪU THUẬT")
-        else:
-            print("TỪ CHỐI: Đường huyết vượt ngưỡng.")
-    else:
-        print("TỪ CHỐI: Huyết áp ngoài giới hạn an toàn.")
-else:
-    print("TỪ CHỐI: Tuổi vượt giới hạn phẫu thuật.")

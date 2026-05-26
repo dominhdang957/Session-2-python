@@ -1,67 +1,72 @@
 
 
 print("=" * 60)
-print("      CHÀO MỪNG ĐẾN VỚI KIOSK TIẾP NHẬN BỆNH NHÂN")
-print("      Vui lòng điền đầy đủ thông tin theo hướng dẫn.")
+print("    KIOSK HR: CẬP NHẬT HỒ SƠ & ĐÁNH GIÁ KPI  ")
 print("=" * 60)
 
+is_validate = True
+is_validate_performance = True
+while is_validate:
+    print("[Nhập thông tin nhân viên]")
+
+    emp_id = ""
+    while emp_id == "": 
+            emp_id = input("Enter employee ID: ")
+            if not emp_id.strip() :
+                    print("Lỗi: Mã nhân viên không được trống hoặc sai cú pháp. Vui lòng nhập lại.")
+                    emp_id = ""
+    emp_name = ""
+    while emp_name == "":
+            emp_name = input("Enter FULLNAME employee : ")
+            if not emp_name.strip() :
+                print("Lỗi: Tên không được trống hoặc sai cú pháp. Vui lòng nhập lại.")
+                emp_name = ""
+         
+
+    salary = 0
+    while salary <= 0:
+            salary = float(input("Enter salary:  "))
+            if salary <= 0:
+                print("[LỖI]: Lương không thể là số âm hoặc bằng 0. vui lòng nhập lại")
+
+    performance = 0
+    while performance < 1 or performance > 5:
+            performance = float(input("Enter performance score(1.0 to 5.0): "))
+            if performance < 1 or performance > 5:
+                print("Lỗi Điểm KPI phải nằm trong khoảng từ 1.0 đến 5.0!")
+            
+        
+    year_experience = -1
+    while year_experience < 0:
+            year_experience = int(input("Enter year of experience: "))
+            if year_experience <= 0: 
+                print("Lỗi kinh nghiệm phải từ 0 năm trở lên. Vui lòng nhập lại.")
+        
+
+    print("=" * 60)
+    print("      E-PROFILE CẬP NHẬT     ")
+    print("=" * 60)
+    print("ID: ",emp_id)
+    print("Name: ", emp_name)
+    print("Salary: ", salary)
+    print("KPI Score: ", performance)
+    print("Experience:" , year_experience)
+
+    print("=" * 60)
+    print("    IT SYSTEM LOG   ")
+    print("=" * 60)
+    print("employee_id             |" , type(emp_id))
+    print("employee_name           |" , type(emp_name))
+    print("employee_salary         |" , type(salary))
+    print("employee_score          |" , type(performance))
+    print("employee_years          |" , type(year_experience))
+
+    print("-" * 60)
+
+    continue_system = input("Do you want to enter another employee? (y/n) :")
+    if continue_system == "n":
+        is_validate = False
+        print("Đang tắt kiosk ... tạm biệt")
+    
 
 
-patient_name = input("Nhập Họ và tên bệnh nhân: ")
-
-patient_age = int(input("Nhập  Tuổi bệnh nhân: "))
-
-spo2_level = int(input("Nhập  Nồng độ oxy trong máu - SpO2 (%)"))
-
-heart_rate = int(input("Nhập Nhịp tim (nhịp/phút): \n"))
-
-has_insurance = input("Nhập Bạn có thẻ Bảo hiểm Y tế (BHYT) không?: ")
-
-print("\n" + "=" * 60)
-
-
-if spo2_level < 90 or heart_rate > 120:
-    triage_result  = "BÁO ĐỘNG ĐỎ — Cấp cứu khẩn!"
-    triage_note    = "Nhân viên y tế đang được điều phối đến ngay."
-
-elif 90 <= spo2_level <= 95 or 100 <= heart_rate <= 120:
-    triage_result  = " BÁO ĐỘNG VÀNG — Cần theo dõi sát."
-    triage_note    = "Vui lòng ngồi khu vực ưu tiên, chờ điều dưỡng kiểm tra."
-
-else:
-    triage_result  = " XANH — Chỉ số an toàn, khám thường."
-    triage_note    = "Vui lòng lấy số thứ tự và chờ tại sảnh."
-
-
-
-BASE_FEE = 500000  
-
-if patient_age < 6 or patient_age >= 80:
-    hospital_fee  = 0
-    fee_note      = "Miễn phí (Trẻ em dưới 6 tuổi hoặc người từ 80 tuổi trở lên)"
-
-elif has_insurance == "yes":
-    hospital_fee  = BASE_FEE // 2     
-    fee_note      = "Giảm 50% (Có thẻ BHYT)"
-
-else:
-    hospital_fee  = BASE_FEE           
-    fee_note      = "Thu 100% (Không thuộc diện miễn/giảm)"
-
-
-print("               PHIẾU TIẾP NHẬN BỆNH NHÂN")
-print("=" * 60)
-print(f"  Họ và tên     : {patient_name}")
-print(f"  Tuổi          : {patient_age} tuổi")
-print(f"  SpO2          : {spo2_level}%")
-print(f"  Nhịp tim      : {heart_rate} nhịp/phút")
-print(f"  Thẻ BHYT      : {'Có' if has_insurance == 'yes' else 'Không'}")
-print("-" * 60)
-print(f"  Phân luồng    : {triage_result}")
-print(f"  Hướng dẫn    : {triage_note}")
-print("-" * 60)
-print(f"  Tạm ứng phí  : {hospital_fee:,} VNĐ")
-print(f"  Ghi chú       : {fee_note}")
-print("=" * 60)
-print("  Cảm ơn bạn đã sử dụng Kiosk. Chúc bạn sức khỏe!")
-print("=" * 60)
